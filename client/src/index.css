@@ -1,1 +1,179 @@
+
+
 @import "tailwindcss";
+
+@theme {
+  /* Main SmartCity colors */
+  --color-primary: #172554;
+  --color-primary-light: #1e3a8a;
+  --color-secondary: #2563eb;
+
+  /* Accent */
+  --color-accent: #06b6d4;
+  --color-accent-dark: #0891b2;
+
+  /* Backgrounds */
+  --color-surface: #f8fafc;
+  --color-surface-blue: #eff6ff;
+
+  /* Text */
+  --color-text: #0f172a;
+  --color-text-muted: #64748b;
+
+  /* Fonts */
+  --font-display: "Sora", sans-serif;
+  --font-body: "Inter", sans-serif;
+}
+
+/* ================================
+   Base
+================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* ================================
+   Fade Up Animation
+================================ */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.8s ease-out both;
+}
+
+/* ================================
+   Floating Animation
+================================ */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ================================
+   Soft Pulse
+================================ */
+
+@keyframes softPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.75;
+    transform: scale(1.05);
+  }
+}
+
+.animate-soft-pulse {
+  animation: softPulse 2s ease-in-out infinite;
+}
+
+/* ================================
+   Scroll Reveal
+================================ */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition:
+    opacity 1s ease,
+    transform 1s ease;
+}
+
+.scroll-reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================================
+   Selection
+================================ */
+
+::selection {
+  background: #bfdbfe;
+  color: #172554;
+}
+
+/* ================================
+   Scrollbar
+================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+
+/* ===== How It Works animated background ===== */
+@keyframes flowBg {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.how-bg {
+  background: linear-gradient(120deg, #0a1a3f, #0d3b91, #0b2a6b, #081a45);
+  background-size: 300% 300%;
+  animation: flowBg 18s ease-in-out infinite;
+}
+
+@keyframes blobFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(60px, 40px) scale(1.15); }
+}
+
+@keyframes blobFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-70px, -30px) scale(1.1); }
+}
+
+.animate-blob-1 { animation: blobFloat1 14s ease-in-out infinite; }
+.animate-blob-2 { animation: blobFloat2 18s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .how-bg, .animate-blob-1, .animate-blob-2 { animation: none; }
+}

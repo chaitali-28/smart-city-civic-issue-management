@@ -41,4 +41,63 @@ const getMyComplaints = async (req, res) => {
   }
 };
 
-module.exports = { createComplaint, getMyComplaints };
+
+
+const getAllComplaintsForAdmin = async (req, res) => {
+  try {
+    // Fetch complaints with citizen and category details
+    const [complaints] = await pool.query(`
+      SELECT
+        c.id,
+        c.citizen_id,
+        u.name AS citizen_name,
+        u.email AS citizen_email,
+        cat.name AS category,
+        c.description,
+        c.image_url,
+        c.address,
+        c.latitude,
+        c.longitude,
+        c.status,
+        c.priority,
+        c.created_at,
+        c.updated_at
+      FROM complaints c
+      JOIN users u ON c.citizen_id = u.id
+      JOIN categories cat ON c.category_id = cat.id
+      ORDER BY c.created_at DESC
+    `);
+
+    // Calculate statistics from the actual database
+    const [statsRows] = await pool.query(`
+      SELECT
+        COUNT(*) AS total,
+        COALESCE(SUM(status = 'pending'), 0) AS pending,
+        COALESCE(SUM(status = 'verified'), 0) AS verified,
+        COALESCE(SUM(status = 'assigned'), 0) AS assigned,
+        COALESCE(SUM(status = 'in_progress'), 0) AS in_progress,
+        COALESCE(SUM(status = 'resolved'), 0) AS resolved,
+        COALESCE(SUM(status = 'rejected'), 0) AS rejected
+      FROM complaints
+    `);
+
+    res.json({
+      success: true,
+      stats: statsRows[0],
+      complaints
+    });
+  } catch (err) {
+    console.error('Admin complaints error:', err);
+    res.status(500).json({
+      error: 'Failed to fetch complaints'
+    });
+  }
+};
+
+
+
+module.exports = {
+  createComplaint,
+  getMyComplaints,
+  getAllComplaintsForAdmin
+};
