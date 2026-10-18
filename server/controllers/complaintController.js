@@ -41,7 +41,36 @@ const getMyComplaints = async (req, res) => {
   }
 };
 
+const deleteComplaint = async (req, res) => {
+  const complaintId = req.params.id;
+  const citizenId = req.user.userId;
 
+  try {
+    const [result] = await pool.query(
+      'DELETE FROM complaints WHERE id = ? AND citizen_id = ?',
+      [complaintId, citizenId]
+    );
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Complaint not found or you are not authorized to delete it.'
+      });
+    }
+
+    return res.json({
+      success: true,
+      message: 'Complaint deleted successfully.'
+    });
+  } catch (err) {
+    console.error('Delete complaint error:', err);
+
+    return res.status(500).json({
+      success: false,
+      message: 'Failed to delete complaint.'
+    });
+  }
+};
 
 const getAllComplaintsForAdmin = async (req, res) => {
   try {
@@ -99,5 +128,6 @@ const getAllComplaintsForAdmin = async (req, res) => {
 module.exports = {
   createComplaint,
   getMyComplaints,
-  getAllComplaintsForAdmin
+  getAllComplaintsForAdmin,
+  deleteComplaint
 };

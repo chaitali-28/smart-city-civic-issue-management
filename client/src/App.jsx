@@ -13,6 +13,8 @@ import Dashboard from './pages/Dashboard';
 import SubmitComplaint from './pages/SubmitComplaint';
 import WorkerDashboard from './pages/WorkerDashboard';
 import AuthorityDashboard from './pages/AuthorityDashboard';
+import Profile from './pages/Profile';
+import HelpCenter from './pages/HelpCenter';
 
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -43,6 +45,23 @@ function App() {
           </ProtectedRoute>
         }
       />
+      <Route
+  path="/profile"
+  element={
+    <ProtectedRoute allowedRoles={['citizen']}>
+      <Profile />
+    </ProtectedRoute>
+  }
+/>
+
+<Route
+  path="/help"
+  element={
+    <ProtectedRoute allowedRoles={['citizen']}>
+      <HelpCenter />
+    </ProtectedRoute>
+  }
+/>
 
       {/* Worker dashboard */}
       <Route

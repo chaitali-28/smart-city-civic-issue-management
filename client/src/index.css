@@ -177,3 +177,26 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .how-bg, .animate-blob-1, .animate-blob-2 { animation: none; }
 }
+
+
+@keyframes civicEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.login-scrollbar-hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.login-scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}

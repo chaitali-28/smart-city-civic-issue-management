@@ -2,6 +2,8 @@
 import { Link } from 'react-router-dom';
 import HowItWorks from '../components/HowItWorks';
 import CivicServices from '../components/CivicServices';
+import Stats from '../components/Stats';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
@@ -456,52 +458,49 @@ export default function Home() {
             </div>
 
 
-            {/* =================================================
-                HEADING
-            ================================================= */}
+            
+{/* HEADING */}
 
-            <h1
-              className="
-                font-display
-                text-4xl
-                sm:text-5xl
-                lg:text-6xl
-                font-bold
-                text-white
-                leading-[1.05]
-                tracking-tight
-                mt-7
-              "
-            >
+<h1
+  className="
+    font-display
+    text-3xl
+    sm:text-4xl
+    lg:text-5xl
+    font-bold
+    text-white
+    leading-[1.12]
+    tracking-tight
+    mt-6
+  "
+>
+  Your city.
 
-              Your city.
+  <span className="block">
+    Your voice.
+  </span>
 
-              <span className="block">
-                Your voice.
-              </span>
+  <span className="block text-cyan-300 mt-1">
+    Better together.
+  </span>
+</h1>
 
-              <span className="block text-cyan-300 mt-1">
-                Better together.
-              </span>
+{/* DESCRIPTION */}
 
-            </h1>
-
-
-            {/* Description */}
-
-            <p
-              className="
-                mt-6
-                max-w-xl
-                text-base
-                md:text-lg
-                text-slate-200
-                leading-relaxed
-              "
-            >
-              Report civic problems, track their progress, and help create
-              cleaner, safer, and better-connected communities.
-            </p>
+<p
+  className="
+    mt-5
+    max-w-xl
+    text-sm
+    sm:text-base
+    md:text-lg
+    text-slate-300
+    leading-relaxed
+  "
+>
+  Report civic problems, track their progress, and help create
+  cleaner, safer, and better-connected communities.
+</p>
 
 
             {/* =================================================
@@ -577,155 +576,7 @@ export default function Home() {
 
           
 
-        {/* =====================================================
-            FLOATING NEW REPORT CARD
-        ===================================================== */}
-
-        <div
-          className="
-            absolute
-            right-[6%]
-            top-[27%]
-            hidden
-            xl:block
-          "
-        >
-
-          <div
-            className="
-              w-60
-              bg-white/95
-              backdrop-blur-md
-              rounded-2xl
-              shadow-2xl
-              border
-              border-white/30
-              px-4
-              py-4
-              animate-floating-card
-            "
-          >
-
-            <div className="flex items-start gap-3">
-
-              <div
-                className="
-                  w-10
-                  h-10
-                  rounded-xl
-                  bg-red-50
-                  flex
-                  items-center
-                  justify-center
-                  text-lg
-                "
-              >
-                📍
-              </div>
-
-              <div>
-
-                <p
-                  className="
-                    text-[10px]
-                    uppercase
-                    tracking-wider
-                    text-slate-400
-                    font-semibold
-                  "
-                >
-                  New Report
-                </p>
-
-                <p className="text-sm font-bold text-slate-900 mt-1">
-                  Road Damage
-                </p>
-
-                <p className="text-xs text-slate-500 mt-1">
-                  Reported 2 min ago
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div className="mt-3 h-1 rounded-full bg-slate-100 overflow-hidden">
-
-              <div className="h-full w-1/3 bg-red-400 rounded-full" />
-
-            </div>
-
-          </div>
-
-        </div>
-
-
-        {/* =====================================================
-            RESOLVED CARD
-        ===================================================== */}
-
-        <div
-          className="
-            absolute
-            right-[18%]
-            bottom-[16%]
-            hidden
-            xl:block
-          "
-        >
-
-          <div
-            className="
-              bg-slate-920/80
-              backdrop-blur-md
-              border
-              border-white/15
-              rounded-2xl
-              px-4
-              py-3
-              shadow-xl
-              animate-floating-card-delay
-            "
-          >
-
-            <div className="flex items-center gap-3">
-
-              <div
-                className="
-                  w-9
-                  h-9
-                  rounded-full
-                  bg-emerald-400/15
-                  flex
-                  items-center
-                  justify-center
-                "
-              >
-
-                <span className="text-emerald-300">
-                  ✓
-                </span>
-
-              </div>
-
-              <div>
-
-                <p className="text-[10px] uppercase tracking-wider text-slate-400">
-                  Resolved
-                </p>
-
-                <p className="text-sm font-semibold text-white">
-                  Streetlight Fixed
-                </p>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
+        
 
 
         {/* =====================================================
@@ -758,146 +609,20 @@ export default function Home() {
       </section>
 
 
-      {/* =========================================================
-          STATS
-      ========================================================= */}
+      <Stats />
 
-      <section className="bg-primary py-12">
-
-        <div className="max-w-6xl mx-auto px-6">
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-
-            <div>
-
-              <p className="font-display text-3xl md:text-4xl font-bold text-white">
-                1,240+
-              </p>
-
-              <p className="text-blue-200 text-sm mt-2">
-                Issues Reported
-              </p>
-
-            </div>
-
-
-            <div>
-
-              <p className="font-display text-3xl md:text-4xl font-bold text-cyan-300">
-                980+
-              </p>
-
-              <p className="text-blue-200 text-sm mt-2">
-                Issues Resolved
-              </p>
-
-            </div>
-
-
-            <div>
-
-              <p className="font-display text-3xl md:text-4xl font-bold text-white">
-                32
-              </p>
-
-              <p className="text-blue-200 text-sm mt-2">
-                Departments
-              </p>
-
-            </div>
-
-
-            <div>
-
-              <p className="font-display text-3xl md:text-4xl font-bold text-cyan-300">
-                94%
-              </p>
-
-              <p className="text-blue-200 text-sm mt-2">
-                Resolution Rate
-              </p>
-
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-            {/* =========================================================
-          HOW IT WORKS
-      ========================================================= */}
+            
 
       <HowItWorks />
 
 
-            {/* SERVICES */}
+            
       <CivicServices />
 
       
       
 
-      {/* =========================================================
-          FOOTER
-      ========================================================= */}
-
-      <footer className="bg-slate-950 text-white">
-
-        <div className="max-w-6xl mx-auto px-6 py-12">
-
-          <div className="flex flex-col md:flex-row justify-between gap-8">
-
-            <div>
-
-              <h3 className="font-display text-xl font-bold">
-                SmartCity
-              </h3>
-
-              <p className="text-slate-400 text-sm mt-3 max-w-sm">
-                A transparent platform connecting citizens
-                and authorities to build better communities.
-              </p>
-
-            </div>
-
-
-            <div className="flex gap-8 text-sm">
-
-              <a
-                href="#home"
-                className="text-slate-400 hover:text-white transition"
-              >
-                Home
-              </a>
-
-              <a
-                href="#how-it-works"
-                className="text-slate-400 hover:text-white transition"
-              >
-                How It Works
-              </a>
-
-              <a
-                href="#services"
-                className="text-slate-400 hover:text-white transition"
-              >
-                Services
-              </a>
-
-            </div>
-
-          </div>
-
-
-          <div className="border-t border-slate-800 mt-10 pt-6 text-sm text-slate-500 text-center">
-            © 2026 SmartCity. Built for better communities.
-          </div>
-
-        </div>
-
-      </footer>
+     <Footer />
 
     </div>
   );
