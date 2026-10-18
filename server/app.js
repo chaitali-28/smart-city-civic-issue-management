@@ -17,6 +17,7 @@ app.use('/api/complaints', complaintRoutes);
 const categoryRoutes = require('./routes/categoryRoutes');
 app.use('/api/categories', categoryRoutes);
 
+
 const { verifyToken, requireRole } = require('./middleware/authMiddleware');
 
 app.get('/api/protected-test', verifyToken, (req, res) => {
